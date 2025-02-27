@@ -9,3 +9,7 @@ pluginManagement {
     }
 }
 rootProject.name='tp1-test'
+
+include ':core'
+include ':console-app'
+include 'api-app'

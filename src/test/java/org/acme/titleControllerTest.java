@@ -1,8 +1,10 @@
 package org.acme;
 
 import io.quarkus.test.junit.QuarkusTest;
+import org.acme.controllers.TitleController;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
 import java.util.Optional;
 
 import static io.restassured.RestAssured.given;
@@ -10,7 +12,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @QuarkusTest
-class GreetingResourceTest {
+class titleControllerTest {
     @Test
     void testHelloEndpoint() {
         given()
@@ -22,9 +24,10 @@ class GreetingResourceTest {
 
     @Test
     void testTitle() {
-        GreetingResource greetingResource = new GreetingResource();
-        String title = greetingResource.title("carmaggedon", Optional.of(3));
-        assertEquals("###carmaggedon", title);
+        TitleController titleController = new TitleController();
+        int n = 3;
+        List<String> anime = titleController.title(Optional.of(n), Optional.of("carmaggedon"));
+        assertEquals("###carmaggedon", anime.get(n));
     }
 
 }
